@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!--
+  If writing a paper with a word processor were to be permitted, it will be 
+  permitted to write paper with HTML5 + CSS3 by using a Web browser.
+  Because "math" element is used in this paper, this is for Firefox only.
+-->
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>HTMLによる論文の作成と評価</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: 210mm;
+        height: 297mm;
+        padding: 20mm;
+        font-family: serif;
+        word-break: normal;
+        text-align: justify;
+      }
+      hgroup {
+        text-align: center;
+      }
+      article {
+        -moz-column-width: 90mm;
+        -moz-column-count: 2;
+        -moz-column-gap: 10mm;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 10mm;
+        width: 100%;
+        height: 273mm;
+        margin-top: 8mm;
+      }
+      p {
+        text-indent: 1em;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: x-large;
+      }
+      h2 {
+        font-size: large;
+        margin-top: 3mm;
+      }
+      h3 {
+        margin-top: 1mm;
+        margin-bottom: 1mm;
+      }
+      h4 {
+        margin-top: 1mm;
+        margin-bottom: 1mm;
+      }
+      h1,h2,h3,h4{
+        font-family: sans-serif;
+      }
+      .typewriter {
+        font-family: monospace;
+      }
+      section {
+        margin-top: 4mm;
+        margin-bottom: 4mm;
+      }
+      figure {
+        margin-top: 4mm;
+      }
+      figcaption {
+        text-align: center;
+        font-size: 100%;
+        display: block;
+      }
+      math {
+        text-align: center;
+        display: block;
+      }
+      table {
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4mm;
+        text-align: center;
+      }
+      th {
+        font-weight: normal;
+        border-right: solid 1px;
+        text-align: left;
+        padding: 1mm;
+      }
+      td {
+        text-align: right;
+        padding: 1mm 3mm;
+      }
+      table.simple thead th,table.simple thead td {
+        border-bottom: solid 1px;
+      }
+      .references li {
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <hgroup>
+    <h1>HTMLによる論文の作成と評価</h1>
+    <h2>天王寺動物園 チンパンジーのあいちゃん</h2>
+    </hgroup>
+    <article>
+    <section>
+    <h3>1. 研究背景</h3>
+    <p>
+    研究者たちの最もポピュラーな論文を作るツールとしてLaTeXがある．
+    LaTeXとはマークアップ言語による組版ソフトで，レイアウトや数式の美しさが評価される．
+    しかし近年，Microsoft Wordを始めとするワードプロセッサで作成された 論文がよく見受けられる．
+    ワードプロセッサによる論文の作成が許されるのなら， 
+    HyperText Markup Language (HTML) とWebブラウザによる論文の作成するのも許されるはずである．
+    </p>
+    <p>
+    HTMLとはWeb向けに作成されたマークアップ言語であり，現在のほとんどのWebコンテンツはHTMLまたはHTMLをXMLで定義したXHTMLが使用されている．
+    またHTMLのレイアウトや装飾を指定するCascading Style Sheets (CSS) が同時に使用される場合が多い．
+    </p>
+    <p>
+    今回は近年注目されているHTML5とCSS3を使用した論文の作成に試みる．
+    また使用するWebブラウザは，HTML5やMathMLへのサポートが十分である，Mozilla Firefox<sup>[1]</sup>である．
+    </p>
+    </section>
+    <section>
+    <h3>2. 研究背景</h3>
+    <section>
+      <h4>2.1 二段カラム</h4>
+      <p>
+      学会などに投稿される論文は二段のカラムから構成されるのが普通である．
+      Mozilla Firefoxには，要素を複数カラムに分割するプロパティが用意されている．
+      これらのプロパティは図1のように使用する．
+      先頭の<span class="typewriter">-moz-</span>はMozillaのGeckoエンジンで使用出来るプロパティを意味するベンダープレフィックスである．
+      この例では<span class="typewriter">article</span>要素を2つのカラムに分割し，カラムのサイズを90mm，そしてカラム間の間隔を10mmに指定している．
+      </p>
+      <figure>
+        <pre>
+          article {
+            -moz-column-width: 90mm;
+            -moz-column-count: 2;
+            -moz-column-gap: 10mm;
+            height: 100%;
+          }
+        </pre>
+        <figcaption>図1. カラムのプロパティの設定</figcaption>
+      </figure>
+      </section>
+    <section>
+    <h4>2.2 数式の挿入</h4>
+    <p>
+    Mozilla FirefoxはMathMLをサポートしており，<span class="typewriter">&lt;math&gt;</span>タグで表現される．
+    次式は二次方程式の解の公式である．
+    </p>
+    <math>
+    <mrow>
+    <mi>x</mi>
+    <mo>=</mo>
+    <mfrac>
+    <mrow>
+    <mrow>
+    <mo>-</mo>
+    <mi>b</mi>
+    </mrow>
+    <mo>&PlusMinus;</mo>
+    <msqrt>
+    <mrow>
+    <msup>
+    <mi>b</mi>
+    <mn>2</mn>
+    </msup>
+    <mo>-</mo>
+    <mrow>
+    <mn>4</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>a</mi>
+    <mo>&InvisibleTimes;</mo>
+    <mi>c</mi>
+    </mrow>
+    </mrow>
+    </msqrt>
+    </mrow>
+    <mrow>
+    <mn>2</mn>
+    <mo>&InvisibleTimes;</mo>
+    <mi>a</mi>
+    </mrow>
+    </mfrac>
+    </mrow>
+    </math>
+    </section>
+    <section>
+      <h4>2.3 図および表の挿入</h4>
+      <p>
+      HTMLでは古くから図を挿入する<span class="typewriter">&lt;img&gt;</span>要素や，表を作成する要素<span class="typewriter">&lt;table&gt;</span>を使用することができる．
+      <span class="typewriter">&lt;table&gt;</span>要素を使用したによる表の作成例を表1に示す．
+      </p>
+      <table class="simple">
+        <caption>表1 キャラ別の攻撃の強さと時間</caption>
+        <thead>
+          <tr><th></th><td>弱パンチ</td><td>中パンチ</td><td>強パンチ</td></tr>
+        </thead>
+        <tr><th>リュウ</th><td>0.8s</td><td>0.5s</td><td>0.3s</td></tr>
+        <tr><th>春麗</th><td>0.8s</td><td>0.5s</td><td>0.3s</td></tr>
+        <tr><th>ダルシム</th><td>1.8s</td><td>0.8s</td><td>1.8s</td></tr>
+      </table>
+    </section>
+    <section>
+      <h3>3. 実験結果</h3>
+      <p>
+        作成した論文をMozilla Firefoxで表示したところ，ワードプロセッサよりも美しく感じた．
+        またSafariやChromiumなどのWebKitを使用したWebブラウザでは<span class="typewriter">-webkit-</span>のベンダープレフィックスが付くプロパティを使用することで二段カラムを作成することができた．
+        しかしSafariやChromiumではMathMLの再現度が低く，正常に表現できなかった．
+        またブラウザごとに僅かな行間などに違いが出た．
+      </p>
+    </section>
+    <section>
+      <h3>4. 今後の課題</h3>
+      <p>
+      今回作成した論文は，予稿などの1ページの論文を想定して作成した．
+      しかし通常の論文では数ページに渡ることが多く，ページをまたぐことができるようなスタイルの定義が必要とされる．
+      また他のブラウザへの対応や，ブラウザ間の差異を埋め合わせることも求められる．
+      </p>
+      </section>
+      <section>
+      <h3>参考文献</h3>
+      <ul class="references">
+        <li>[1] <span class="typewriter">http://www.firefox.com/</span></li>
+      </ul>
+    </section>
+    </article>
+  </body>
+</html>
+
